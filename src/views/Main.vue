@@ -84,7 +84,6 @@
     import sidebarMenuShrink from './main_components/sidebarMenuShrink.vue';
     import Cookies from 'js-cookie';
     import util from '@/libs/util.js';
-    
     export default {
         components: {
             sidebarMenu,

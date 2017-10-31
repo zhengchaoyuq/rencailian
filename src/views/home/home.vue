@@ -12,6 +12,7 @@
                             <Col span="8">
                                 <Row class-name="made-child-con-middle" type="flex" align="middle">
                                     <img class="avator-img" :src="avatorPath" />
+                                    <!--头像-->
                                 </Row>
                             </Col>
                             <Col span="16" style="padding-left:6px;">

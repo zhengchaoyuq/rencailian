@@ -3,7 +3,18 @@
 </style>
 
 <template>
+	
     <div class="login" @keydown.enter="handleSubmit">
+    	<div class="zhuce">
+    		
+    		<img src="../../dist/plugins/emoticons/img/smiley-innocent.gif"/>
+    		<div class="context">
+    			<span style="color:black">第一次使用？</span>
+    			<span @click="LoginResigister">立即注册</span>|<span>客服</span>
+    		</div>
+    		
+    	</div>
+    	
         <div class="login-con">
             <Card :bordered="false">
                 <p slot="title">
@@ -30,7 +41,6 @@
                             <Button @click="handleSubmit" type="primary" long>登录</Button>
                         </FormItem>
                     </Form>
-                    <p class="login-tip">输入任意用户名和密码即可</p>
                 </div>
             </Card>
         </div>
@@ -73,11 +83,35 @@ export default {
                     });
                 }
             });
-        }
+        },
+      LoginResigister(){
+      	 this.$router.push({
+                        name: 'resigister'
+                    });
+      }
     }
+    
 };
 </script>
 
 <style>
-
+.zhuce{
+	width:100%;
+	height:10%;
+	background-color: white;
+}
+.zhuce img {
+	position:absolute;
+}
+.context{
+	cursor: pointer;
+	position:relative;
+	left:75%;
+	top:70%;
+	font-size: 1rem;
+}
+.context span{
+	color:blue;
+	
+}
 </style>
