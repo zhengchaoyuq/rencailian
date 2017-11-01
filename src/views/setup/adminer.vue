@@ -1,10 +1,11 @@
-<style >
-    
+<style>
+  
 </style>
+
 
 <template>
     <div>
-      认证
+      管理员
     </div>
 </template>
 

@@ -4,13 +4,19 @@
 			123
 		</header>
 		<section>
-		<Steps :current="2">
-        <Step title="基本信息" content="这里是该步骤的描述信息"></Step>
-        <Step title="协议" content="这里是该步骤的描述信息"></Step>
-        <Step title="成功" content="这里是该步骤的描述信息"></Step>
-           </Steps>
-			123123123123123
-			<br/><Button @click="login">下一步</Button>
+			<Steps :current="4" class="xinxi">
+					<Step title="协议"></Step>
+					<Step title="注册"></Step>
+					<Step title="邮箱验证"></Step>
+					<Step title="基本信息填写"></Step>
+					<Step title="完成"></Step>
+				</Steps>
+			<div class="successCon">
+				<Scroll>
+				<h1>注册成功跳转至登录页</h1>
+			<br/><Button @click="login">登录</Button>
+			    </Scroll>
+			</div>
 			</section>
 			
 		</div>
@@ -34,4 +40,18 @@
 </script>
 
 <style>
+ 	.successCon {
+		position: relative;
+		left: 35%;
+	}
+	
+	.successCon span{
+		display: block;
+		width: 200px;
+		height: 1.5rem;
+	}
+	
+	.successCon input {
+		width: 20%;
+	}
 </style>

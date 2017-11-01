@@ -5,18 +5,21 @@
 			
 		</header>
 		<section>
-			<Steps :current="1">
-				<Step title="基本信息" content="这里是该步骤的描述信息"></Step>
-				<Step title="协议" content="这里是该步骤的描述信息"></Step>
-				<Step title="成功" content="这里是该步骤的描述信息"></Step>
+			<Steps :current="0" class="xinxi">
+				<Step title="协议"></Step>
+				<Step title="注册"></Step>
+				<Step title="邮箱验证"></Step>
+				<Step title="基本信息填写"></Step>
+				<Step title="完成"></Step>
 			</Steps>
+			<div class="annContext">
 			123123123123123
 			<CheckboxGroup>
 				<Checkbox v-model="single" label="我同意协议"></Checkbox>
 			</CheckboxGroup>
 			<br/>
-			<Button  @click="success" :disabled=disable>下一步</Button>
-
+			<Button  @click="resigister" :disabled=disable>下一步</Button>
+              </div>
 		</section>
 	</div>
 
@@ -39,9 +42,9 @@
 			})
 		},
 		methods: {
-			success() {
+			resigister() {
 				this.$router.push({
-					name: 'success'
+					name: 'resigister'
 				});
 			},
 			Ynbutton(newVal) {
@@ -52,5 +55,14 @@
 </script>
 
 <style>
-
+	.xinxi{
+		padding:5% 20%;
+		position: relative;
+		left:5%;
+	}
+	.annContext{
+		text-align: center;
+		
+	}
+	
 </style>

@@ -1,10 +1,7 @@
-<style >
-    
-</style>
 
 <template>
     <div>
-      认证
+       北京调查
     </div>
 </template>
 

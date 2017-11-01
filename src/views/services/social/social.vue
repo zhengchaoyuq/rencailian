@@ -1,13 +1,14 @@
-<style >
-    
-</style>
 
 <template>
     <div>
-      认证
-    </div>
+    	社保
+      </div>
 </template>
 
 <script>
 
 </script>
+
+<style>
+
+</style>

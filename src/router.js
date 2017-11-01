@@ -25,6 +25,22 @@ export const announce = {
     },
     component: resolve => { require(['./views/announce.vue'], resolve); }
 };
+export const email = {
+    path: '/email',
+    name: 'email',
+    meta: {
+        title: '邮箱验证'
+    },
+    component: resolve => { require(['./views/email.vue'], resolve); }
+};
+export const fillin = {
+    path: '/fillin',
+    name: 'fillin',
+    meta: {
+        title: '基本信息填写'
+    },
+    component: resolve => { require(['./views/fillin.vue'], resolve); }
+};
 export const success = {
     path: '/success',
     name: 'success',
@@ -60,13 +76,6 @@ export const page500 = {
     name: 'error_500',
     component: resolve => { require(['./views/error_page/500.vue'], resolve); }
 };
-
-export const preview = {
-    path: '/preview',
-    name: 'preview',
-    component: resolve => { require(['./views/form/article-publish/preview.vue'], resolve); }
-};
-
 export const locking = {
     path: '/locking',
     name: 'locking',
@@ -111,35 +120,35 @@ export const appRouter = [
                 icon: 'compose',
                 name: 'redpaper',
                 title: '红包',
-                component: resolve => { require(['./views/services/text-editor/text-editor.vue'], resolve); }
+                component: resolve => { require(['./views/services/redpaper/redpaper.vue'], resolve); }
             },
             {
                 path: 'recruit',
                 icon: 'pound',
                 name: 'recruit',
                 title: '招聘',
-                component: resolve => { require(['./views/services/markdown-editor/markdown-editor.vue'], resolve); }
+                component: resolve => { require(['./views/services/recruit/recruit.vue'], resolve); }
             },
             {
-                path: 'SocialSecurity',
+                path: 'social',
                 icon: 'crop',
-                name: 'SocialSecurity',
+                name: 'social',
                 title: '社保',
-                component: resolve => { require(['./views/services/image-editor/image-editor.vue'], resolve); }
+                component: resolve => { require(['./views/services/social/social.vue'], resolve); }
             },
             {
                 path: 'survey',
                 icon: 'arrow-move',
                 name: 'survey',
                 title: '背景调查',
-                component: resolve => { require(['./views/services/draggable-list/draggable-list.vue'], resolve); }
+                component: resolve => { require(['./views/services/survey/survey.vue'], resolve); }
             },
             {
-                path: 'IntellectualProperty',
+                path: 'Property',
                 icon: 'android-upload',
-                name: 'IntellectualProperty',
+                name: 'Property',
                 title: '知识产权',
-                component: resolve => { require(['./views/services/file-upload/file-upload.vue'], resolve); }
+                component: resolve => { require(['./views/services/Property/Property.vue'], resolve); }
             }
         ]
     },
@@ -150,23 +159,23 @@ export const appRouter = [
         title: '管理',
         component: Main,
         children: [
-            { path: 'dragableTable', title: '人才', name: 'dragable-table', icon: 'arrow-move', component: resolve => { require(['./views/admins/dragable-table.vue'], resolve); } },
-            { path: 'editableTable', title: '业务', name: 'editable-table', icon: 'edit', component: resolve => { require(['./views/admins/editable-table.vue'], resolve); } },
-            { path: 'searchableTable', title: '品牌', name: 'searchable-table', icon: 'search', component: resolve => { require(['./views/admins/searchable-table.vue'], resolve); } },
-            { path: 'exportableTable', title: '场地', name: 'exportable-table', icon: 'code-download', component: resolve => { require(['./views/admins/exportable-table.vue'], resolve); } },
-            { path: 'table2image', title: '文案', name: 'table-to-image', icon: 'images', component: resolve => { require(['./views/admins/table-to-image.vue'], resolve); } }
+            { path: 'personnel', title: '人才', name: 'personnel', icon: 'arrow-move', component: resolve => { require(['./views/admins/personnel.vue'], resolve); } },
+            { path: 'business', title: '业务', name: 'business', icon: 'edit', component: resolve => { require(['./views/admins/business.vue'], resolve); } },
+            { path: 'brand', title: '品牌', name: 'brand', icon: 'search', component: resolve => { require(['./views/admins/brand.vue'], resolve); } },
+            { path: 'field', title: '场地', name: 'field', icon: 'code-download', component: resolve => { require(['./views/admins/field.vue'], resolve); } },
+            { path: 'copy', title: '文案', name: 'copy', icon: 'images', component: resolve => { require(['./views/admins/copy.vue'], resolve); } }
         ]
     },
     
     {
-        path: '/form',
+        path: '/workorder',
         icon: 'android-checkbox',
-        name: 'form',
+        name: 'workorder',
         title: '工单',
         component: Main,
         children: [
-            { path: 'artical-publish', title: '购买记录', name: 'artical-publish', icon: 'compose', component: resolve => { require(['./views/form/article-publish/article-publish.vue'], resolve); } },
-            { path: 'workflow', title: '充值记录', name: 'workflow', icon: 'arrow-swap', component: resolve => { require(['./views/form/work-flow/work-flow.vue'], resolve); } }
+            { path: 'purchase', title: '购买记录', name: 'purchase', icon: 'compose', component: resolve => { require(['./views/workorder/purchase/purchase.vue'], resolve); } },
+            { path: 'recharge', title: '充值记录', name: 'recharge', icon: 'arrow-swap', component: resolve => { require(['./views/workorder/recharge/recharge.vue'], resolve); } }
 
         ]
     },
@@ -181,7 +190,7 @@ export const appRouter = [
             { path: 'Einformation', title: '增强信息', name: 'Einformation', icon: 'edit', component: resolve => { require(['./views/setup/Einformation.vue'], resolve); } },
             { path: 'searchableTable', title: '认证', name: 'searchable-table', icon: 'search', component: resolve => { require(['./views/setup/searchable-table.vue'], resolve); } },
             { path: 'exportableTable', title: '充值', name: 'exportable-table', icon: 'code-download', component: resolve => { require(['./views/setup/exportable-table.vue'], resolve); } },
-            { path: 'table2image', title: '管理员', name: 'table-to-image', icon: 'images', component: resolve => { require(['./views/setup/table-to-image.vue'], resolve); } }
+            { path: 'adminer', title: '管理员', name: 'adminer', icon: 'images', component: resolve => { require(['./views/setup/adminer.vue'], resolve); } }
         ]
     }
 ];
@@ -191,9 +200,10 @@ export const routers = [
     loginRouter,
     resigister,
     announce,	
+    email,
+    fillin,
     success,
     otherRouter,
-    preview,
     locking,
     ...appRouter,
     page500,

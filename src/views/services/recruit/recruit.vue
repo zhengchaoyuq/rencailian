@@ -1,10 +1,7 @@
-<style >
-    
-</style>
 
 <template>
     <div>
-      认证
+       招聘
     </div>
 </template>
 

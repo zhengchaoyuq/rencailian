@@ -5,14 +5,17 @@
 		</header>
 		<section>
 			<div>
-				<Steps :current="0">
-					<Step title="基本信息" content="这里是该步骤的描述信息"></Step>
-					<Step title="协议" content="这里是该步骤的描述信息"></Step>
-					<Step title="成功" content="这里是该步骤的描述信息"></Step>
-
-				</Steps>
+				<Steps :current="2" class="xinxi">
+				<Step title="协议"></Step>
+				<Step title="注册"></Step>
+				<Step title="邮箱验证"></Step>
+				<Step title="基本信息填写"></Step>
+				<Step title="完成"></Step>
+			</Steps>
 			</div>
+			
 			<div class="ResigisterCon">
+				<Scroll>
 				<div>
 					<Form :model="form" :rules="rules" ref="form">
 						<FormItem label="企业全称" prop="userName">
@@ -21,6 +24,7 @@
 						</FormItem>
 						<FormItem label="邮箱" prop="email">
 							<Input v-model="form.email" placeholder="请输入邮箱"></Input>
+								<Button style="width:20%">验证邮箱</Button>
 						</FormItem>
 						<FormItem label="密码" prop="password">
 							<Input type="password" v-model="form.password" placeholder="请输入密码">
@@ -35,7 +39,8 @@
 				</div>
 
 				<br/>
-				<Button @click="announce" :disabled=disable>下一步</Button>
+				<Button 	style="width:20%" @click="email" :disabled=disable>下一步</Button>
+			</Scroll>
 			</div>
 
 		</section>
@@ -89,9 +94,9 @@
 			})
 		},
 		methods: {
-			announce() {
+			email() {
 				this.$router.push({
-					name: 'announce'
+					name: 'email'
 				});
 			},
 			Ynbutton(newVal) {
@@ -110,6 +115,7 @@
 		height: 10%;
 		background-color: white;
 		font-size: 2.5rem;
+		text-align: center;
 	}
 	
 	section {

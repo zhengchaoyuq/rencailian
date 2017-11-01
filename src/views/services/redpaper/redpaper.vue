@@ -1,13 +1,15 @@
-<style >
-    
-</style>
 
 <template>
     <div>
-      认证
+       红包
+      
     </div>
 </template>
 
 <script>
 
 </script>
+
+<style>
+
+</style>

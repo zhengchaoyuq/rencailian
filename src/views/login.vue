@@ -10,7 +10,7 @@
     		<img src="../../dist/plugins/emoticons/img/smiley-innocent.gif"/>
     		<div class="context">
     			<span style="color:black">第一次使用？</span>
-    			<span @click="LoginResigister">立即注册</span>|<span>客服</span>
+    			<span @click="announce">立即注册</span>|<span>客服</span>
     		</div>
     		
     	</div>
@@ -84,9 +84,9 @@ export default {
                 }
             });
         },
-      LoginResigister(){
+      announce(){
       	 this.$router.push({
-                        name: 'resigister'
+                        name: 'announce'
                     });
       }
     }

@@ -103,13 +103,13 @@ const store = new Vuex.Store({
             name: 'home_index'
         }],
         currentPageName: '',
-        currentPath: [
-            {
-                title: '首页',
-                path: '',
-                name: 'home_index'
-            }
-        ],  // 面包屑数组
+//      currentPath: [
+//          {
+//              title: '首页',
+//              path: '',
+//              name: 'home_index'
+//          }
+//      ],  // 面包屑数组
         openedSubmenuArr: [],  // 要展开的菜单数组
         menuTheme: '', // 主题
         theme: '',
