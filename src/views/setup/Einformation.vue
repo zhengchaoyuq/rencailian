@@ -4,7 +4,7 @@
 
 <template>
     <div class="baseTitle">
-          <Card style="width:30%">
+          <Card style="width:80%">
         <div style="text-align:center">
             <h3>{{title}}</h3>
             <Input v-model="address" :disabled=disable>

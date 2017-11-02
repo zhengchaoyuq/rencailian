@@ -1,6 +1,6 @@
 <template>
     <div class="baseTitle">
-     <Card style="width:30%">
+     <Card style="width:80%">
         <div style="text-align:center">
             <h2>企业全称：xxx</h2>
             <h3>企业简称:XXX</h3>
@@ -26,6 +26,6 @@
 <style>
 	.baseTitle{
 		position: relative;
-		left:35%;
+		left:10%;
 	}
 </style>

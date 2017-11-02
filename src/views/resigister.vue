@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<header>
-			123
+			
 		</header>
 		<section>
 			<div>
@@ -113,7 +113,7 @@
 	header {
 		width: 100%;
 		height: 10%;
-		background-color: white;
+		background-color: gainsboro;
 		font-size: 2.5rem;
 		text-align: center;
 	}

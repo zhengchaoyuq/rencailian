@@ -2,7 +2,6 @@
 	<div>
 		<header>
 			123
-			
 		</header>
 		<section>
 			<Steps :current="0" class="xinxi">
@@ -12,14 +11,21 @@
 				<Step title="基本信息填写"></Step>
 				<Step title="完成"></Step>
 			</Steps>
+			
 			<div class="annContext">
-			123123123123123
+				 <Scroll>
+			<h3>人才链平台服务协议</h3>
+			<p>
+				
+			</p>
 			<CheckboxGroup>
 				<Checkbox v-model="single" label="我同意协议"></Checkbox>
 			</CheckboxGroup>
 			<br/>
 			<Button  @click="resigister" :disabled=disable>下一步</Button>
+			</Scroll>
               </div>
+              
 		</section>
 	</div>
 

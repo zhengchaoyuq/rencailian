@@ -88,7 +88,7 @@ export const otherRouter = {
     name: 'otherRouter',
     component: Main,
    children: [
-        { path: 'home', title: {i18n: 'home'}, name: 'home_index', component: resolve => { require(['./views/home/home.vue'], resolve); } },
+        { path: 'login', title: {i18n: '首页'}, name: 'login', component: resolve => { require(['./views/login.vue'], resolve); } },
         { path: 'ownspace', title: '个人中心', name: 'ownspace_index', component: resolve => { require(['./views/own-space/own-space.vue'], resolve); } },
         { path: 'order/:order_id', title: '订单详情', name: 'order_info', component: resolve => { require(['./views/advanced-router/component/order-info.vue'], resolve); } },  // 用于展示动态路由
         { path: 'shopping', title: '购物详情', name: 'shopping', component: resolve => { require(['./views/advanced-router/component/shopping-info.vue'], resolve); } },  // 用于展示带参路由
@@ -101,11 +101,11 @@ export const appRouter = [
     {
         path: '/home',
         icon: 'key',
-        name: 'hone',
+        name: 'home',
         title: '首页',
         component: Main,
         children: [
-            { path: 'index', title: '首页', name: 'access_index', component: resolve => { require(['./views/home/home.vue'], resolve); } }
+            { path: 'index', title: '首页', name: 'index', component: resolve => { require(['./views/home/home.vue'], resolve); } }
         ]
     },
     {
@@ -188,7 +188,7 @@ export const appRouter = [
         children: [
             { path: 'information', title: '基本信息', name: 'information', icon: 'arrow-move', component: resolve => { require(['./views/setup/information.vue'], resolve); } },
             { path: 'Einformation', title: '增强信息', name: 'Einformation', icon: 'edit', component: resolve => { require(['./views/setup/Einformation.vue'], resolve); } },
-            { path: 'searchableTable', title: '认证', name: 'searchable-table', icon: 'search', component: resolve => { require(['./views/setup/searchable-table.vue'], resolve); } },
+            { path: 'authentication', title: '认证', name: 'authentication', icon: 'search', component: resolve => { require(['./views/setup/authentication.vue'], resolve); } },
             { path: 'exportableTable', title: '充值', name: 'exportable-table', icon: 'code-download', component: resolve => { require(['./views/setup/exportable-table.vue'], resolve); } },
             { path: 'adminer', title: '管理员', name: 'adminer', icon: 'images', component: resolve => { require(['./views/setup/adminer.vue'], resolve); } }
         ]

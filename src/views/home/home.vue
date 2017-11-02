@@ -50,7 +50,6 @@ export default {
     name: 'home',
     data () {
         return {
-
         };
     },
     computed: {

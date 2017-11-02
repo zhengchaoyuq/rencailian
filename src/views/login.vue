@@ -6,11 +6,10 @@
 	
     <div class="login" @keydown.enter="handleSubmit">
     	<div class="zhuce">
-    		
-    		<img src="../../dist/plugins/emoticons/img/smiley-innocent.gif"/>
+    	
     		<div class="context">
     			<span style="color:black">第一次使用？</span>
-    			<span @click="announce">立即注册</span>|<span>客服</span>
+    			<span @click="announce" style="cursor: pointer">立即注册</span>|<span style="cursor: pointer">客服</span>
     		</div>
     		
     	</div>
@@ -79,7 +78,7 @@ export default {
                         Cookies.set('access', 1);
                     }
                     this.$router.push({
-                        name: 'home_index'
+                        name: 'home'
                     });
                 }
             });
@@ -98,13 +97,12 @@ export default {
 .zhuce{
 	width:100%;
 	height:10%;
-	background-color: white;
+	background-color: gainsboro;
 }
 .zhuce img {
 	position:absolute;
 }
 .context{
-	cursor: pointer;
 	position:relative;
 	left:75%;
 	top:70%;

@@ -9,11 +9,11 @@ import Cookies from 'js-cookie';
 import 'iview/dist/styles/iview.css';
 
 import VueI18n from 'vue-i18n';
-import Locales from './locale';
-import zhLocale from 'iview/src/locale/lang/zh-CN';
-import enLocale from 'iview/src/locale/lang/en-US';
-import zhTLocale from 'iview/src/locale/lang/zh-TW';
 
+
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios, axios);
 Vue.use(VueRouter);
 Vue.use(Vuex);
 Vue.use(VueI18n);
@@ -26,18 +26,11 @@ const lang = window.localStorage.lang || localLang || 'zh-CN';
 
 Vue.config.lang = lang;
 
-// 多语言配置
-const locales = Locales;
-const mergeZH = Object.assign(zhLocale, locales['zh-CN']);
-const mergeEN = Object.assign(enLocale, locales['en-US']);
-const mergeTW = Object.assign(zhTLocale, locales['zh-TW']);
-Vue.locale('zh-CN', mergeZH);
-Vue.locale('en-US', mergeEN);
-Vue.locale('zh-TW', mergeTW);
+
 
 // 路由配置
 const RouterConfig = {
-    // mode: 'history',
+
     routes: routers
 };
 
@@ -54,19 +47,20 @@ router.beforeEach((to, from, next) => {
     } else if (Cookies.get('locking') === '0' && to.name === 'locking') {
         next(false);
     } 
-    else{
-//      if (!Cookies.get('user') && to.name !== 'login') {  // 判断是否已经登录且前往的页面不是登录页
+    else{ 
+//      if (!Cookies.get('user') && to.name !== ('login')) {  // 判断是否已经登录且前往的页面不是登录页
 //          next({
-//              name: 'login'
+//              name: 'login',
 //          });
 //      } 
 //      else 
         if (Cookies.get('user') && to.name === 'login') {  // 判断是否已经登录且前往的是登录页
             Util.title();
             next({
-                name: 'home_index'
+                name: 'home'
             });
-        } else {
+        } else
+        {
             if (Util.getRouterObjByName([otherRouter, ...appRouter], to.name).access !== undefined) {  // 判断用户是否有权限访问当前页
                 if (Util.getRouterObjByName([otherRouter, ...appRouter], to.name).access === parseInt(Cookies.get('access'))) {
                     Util.toDefaultPage([otherRouter, ...appRouter], to.name, router, next);  // 如果在地址栏输入的是一级菜单则默认打开其第一个二级菜单的页面
@@ -100,23 +94,23 @@ const store = new Vuex.Store({
         pageOpenedList: [{
             title: '首页',
             path: '',
-            name: 'home_index'
+            name: 'home'
         }],
         currentPageName: '',
-//      currentPath: [
-//          {
-//              title: '首页',
-//              path: '',
-//              name: 'home_index'
-//          }
-//      ],  // 面包屑数组
+        currentPath: [
+            {
+                title: '首页',
+                path: '',
+                name: 'home'
+            }
+        ],  // 面包屑数组
         openedSubmenuArr: [],  // 要展开的菜单数组
         menuTheme: '', // 主题
         theme: '',
         cachePage: [],
         lang: '',
         isFullScreen: false,
-        dontCache: ['text-editor']  // 在这里定义你不想要缓存的页面的name属性值(参见路由配置router.js)
+        dontCache: ['home']  // 在这里定义你不想要缓存的页面的name属性值(参见路由配置router.js)
     },
     getters: {
 
