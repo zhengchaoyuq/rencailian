@@ -1,2 +1,6 @@
 src/vendors.js
 src/libs/table2excel.js
+src/view/email.vue
+src/view/resigister.vue
+src/view/success.vue
+src/view/view.vue

@@ -66,20 +66,20 @@
 </template>
 <script>
 	export default {
-		data() {
-			return {
+		data () {
+		    return {
 				disable: true,
 				form: {
 					userName: '',
 					USCI: '',
-					repassword:"",
-					shortname:"",
-					address:"",
-					money:"",
-					people:"",
-					range:"",
-					name:"",
-					account:""
+					repassword:'',
+					shortname:'',
+					address:'',
+					money:'',
+					people:'',
+					range:'',
+					name:'',
+					account:''
 				},
 				rules: {
 					userName: [{
@@ -129,7 +129,8 @@
 			this.$watch('form',function(newVal){
 				this.Ynbutton(newVal);
 				
-			},{
+			},
+			  {
 				deep:true
 			})
 		},

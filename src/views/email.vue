@@ -38,7 +38,7 @@
 			return {
 				disable: true,
 				form: {
-					code: "",
+					code: ''
 				},
 		rules: {
 					code: [{

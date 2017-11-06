@@ -1,9 +1,7 @@
 <style lang="less">
     @import './login.less';
 </style>
-
 <template>
-	
     <div class="login" @keydown.enter="handleSubmit">
     	<div class="zhuce">
     	
@@ -52,7 +50,7 @@ export default {
     data () {
         return {
             form: {
-                userName: 'iview_admin',
+                userName: '',
                 password: ''
             },
             rules: {
@@ -109,7 +107,7 @@ export default {
 	font-size: 1rem;
 }
 .context span{
-	color:blue;
+	color: #4e73ff;
 	
 }
 </style>

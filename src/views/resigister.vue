@@ -1,7 +1,7 @@
 <template>
-	<div>
+	<div class="backG">
 		<header>
-			
+			注册信息
 		</header>
 		<section>
 			<div>
@@ -13,10 +13,10 @@
 				<Step title="完成"></Step>
 			</Steps>
 			</div>
-			
+
 			<div class="ResigisterCon">
 				<Scroll>
-				<div>
+				<div class="sectionCo">
 					<Form :model="form" :rules="rules" ref="form">
 						<FormItem label="企业全称" prop="userName">
 							<Input v-model="form.userName" placeholder="请输入企业全称">
@@ -57,8 +57,8 @@
 				form: {
 					userName: '',
 					password: '',
-					repassword: "",
-					email: '',
+					repassword: '',
+					email: ''
 				},
 				rules: {
 					userName: [{
@@ -70,7 +70,11 @@
 						required: true,
 						message: '密码不能为空',
 						trigger: 'blur'
-					}],
+					},
+                        {   required: true,
+                            message: '密码不一致',
+                            trigger: 'blur'
+                        }],
 					email: [{
 							required: true,
 							message: '邮箱不能为空',
@@ -88,10 +92,10 @@
 		created(){
 			this.$watch('form',function(newVal){
 				this.Ynbutton(newVal);
-				
+
 			},{
 				deep:true
-			})
+			});
 		},
 		methods: {
 			email() {
@@ -102,7 +106,7 @@
 			Ynbutton(newVal) {
 				this.$refs.form.validate((valid) => {
 					valid ? (this.disable = false) : (this.disable = true)
-				})
+				});
 			}
 
 		}
@@ -117,27 +121,31 @@
 		font-size: 2.5rem;
 		text-align: center;
 	}
-	
+
 	section {
+
 		position: absolute;
 		width: 80%;
-		height: auto;
+		height: 80%;
 		background: white;
 		top: 10%;
 		left: 10%;
 	}
-	
+	.sectionCo{
+		height:auto;
+	}
+
 	.ResigisterCon {
 		position: relative;
 		left: 35%;
 	}
-	
+
 	.ResigisterCon span {
 		display: block;
 		width: 200px;
 		height: 1.5rem;
 	}
-	
+
 	.ResigisterCon input {
 		width: 20%;
 	}

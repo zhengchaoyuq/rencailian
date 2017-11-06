@@ -10,23 +10,13 @@ import 'iview/dist/styles/iview.css';
 
 import VueI18n from 'vue-i18n';
 
-
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+import axios from 'axios';
+import VueAxios from 'vue-axios';
 Vue.use(VueAxios, axios);
 Vue.use(VueRouter);
 Vue.use(Vuex);
 Vue.use(VueI18n);
 Vue.use(iView);
-
-// 自动设置语言
-const navLang = navigator.language;
-const localLang = (navLang === 'zh-CN' || navLang === 'en-US') ? navLang : false;
-const lang = window.localStorage.lang || localLang || 'zh-CN';
-
-Vue.config.lang = lang;
-
-
 
 // 路由配置
 const RouterConfig = {
@@ -46,21 +36,19 @@ router.beforeEach((to, from, next) => {
         });
     } else if (Cookies.get('locking') === '0' && to.name === 'locking') {
         next(false);
-    } 
-    else{ 
+    } else {
 //      if (!Cookies.get('user') && to.name !== ('login')) {  // 判断是否已经登录且前往的页面不是登录页
 //          next({
 //              name: 'login',
 //          });
-//      } 
-//      else 
+//      }
+//      else
         if (Cookies.get('user') && to.name === 'login') {  // 判断是否已经登录且前往的是登录页
             Util.title();
             next({
                 name: 'home'
             });
-        } else
-        {
+        } else {
             if (Util.getRouterObjByName([otherRouter, ...appRouter], to.name).access !== undefined) {  // 判断用户是否有权限访问当前页
                 if (Util.getRouterObjByName([otherRouter, ...appRouter], to.name).access === parseInt(Cookies.get('access'))) {
                     Util.toDefaultPage([otherRouter, ...appRouter], to.name, router, next);  // 如果在地址栏输入的是一级菜单则默认打开其第一个二级菜单的页面
