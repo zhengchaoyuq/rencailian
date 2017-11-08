@@ -49,6 +49,14 @@ export const success = {
     },
     component: resolve => { require(['./views/success.vue'], resolve); }
 };
+export const creatNewView = {
+    path: '/creatNewView',
+    name: 'creatNewView',
+    meta: {
+        title: '建立新视图'
+    },
+    component: resolve => { require(['./views/creatNewView.vue'], resolve); }
+};
 
 export const page404 = {
     path: '/*',
@@ -87,12 +95,25 @@ export const otherRouter = {
     path: '/',
     name: 'otherRouter',
     component: Main,
-   children: [
-        { path: 'login', title: {i18n: '首页'}, name: 'login', component: resolve => { require(['./views/login.vue'], resolve); } },
-        { path: 'ownspace', title: '个人中心', name: 'ownspace_index', component: resolve => { require(['./views/own-space/own-space.vue'], resolve); } },
-        { path: 'order/:order_id', title: '订单详情', name: 'order_info', component: resolve => { require(['./views/advanced-router/component/order-info.vue'], resolve); } },  // 用于展示动态路由
-        { path: 'shopping', title: '购物详情', name: 'shopping', component: resolve => { require(['./views/advanced-router/component/shopping-info.vue'], resolve); } },  // 用于展示带参路由
-        { path: 'message', title: '消息中心', name: 'message_index', component: resolve => { require(['./views/message/message.vue'], resolve); } }
+    children: [
+        {
+            path: 'login',
+            title: {i18n: '首页'},
+            name: 'login',
+            component: resolve => { require(['./views/login.vue'], resolve); }
+        },
+        {
+            path: 'ownspace',
+            title: '个人中心',
+            name: 'ownspace_index',
+            component: resolve => { require(['./views/own-space/own-space.vue'], resolve); }
+        },
+        {
+            path: 'message',
+            title: '消息中心',
+            name: 'message_index',
+            component: resolve => { require(['./views/message/message.vue'], resolve); }
+        }
     ]
 };
 
@@ -105,7 +126,12 @@ export const appRouter = [
         title: '首页',
         component: Main,
         children: [
-            { path: 'index', title: '首页', name: 'index', component: resolve => { require(['./views/home/home.vue'], resolve); } }
+            {
+                path: 'index',
+                title: '首页',
+                name: 'index',
+                component: resolve => { require(['./views/home/home.vue'], resolve); }
+            }
         ]
     },
     {
@@ -152,21 +178,50 @@ export const appRouter = [
             }
         ]
     },
-      {
+    {
         path: '/admin',
         icon: 'ios-grid-view',
         name: 'admin',
         title: '管理',
         component: Main,
         children: [
-            { path: 'personnel', title: '人才', name: 'personnel', icon: 'arrow-move', component: resolve => { require(['./views/admins/personnel.vue'], resolve); } },
-            { path: 'business', title: '业务', name: 'business', icon: 'edit', component: resolve => { require(['./views/admins/business.vue'], resolve); } },
-            { path: 'brand', title: '品牌', name: 'brand', icon: 'search', component: resolve => { require(['./views/admins/brand.vue'], resolve); } },
-            { path: 'field', title: '场地', name: 'field', icon: 'code-download', component: resolve => { require(['./views/admins/field.vue'], resolve); } },
-            { path: 'copy', title: '文案', name: 'copy', icon: 'images', component: resolve => { require(['./views/admins/copy.vue'], resolve); } }
+            {
+                path: 'personnel',
+                title: '人才',
+                name: 'personnel',
+                icon: 'arrow-move',
+                component: resolve => { require(['./views/admins/personnel.vue'], resolve); }
+            },
+            {
+                path: 'business',
+                title: '业务',
+                name: 'business',
+                icon: 'edit',
+                component: resolve => { require(['./views/admins/business.vue'], resolve); }
+            },
+            {
+                path: 'brand',
+                title: '品牌',
+                name: 'brand',
+                icon: 'search',
+                component: resolve => { require(['./views/admins/brand.vue'], resolve); }
+            },
+            {
+                path: 'field',
+                title: '场地',
+                name: 'field',
+                icon: 'code-download',
+                component: resolve => { require(['./views/admins/field.vue'], resolve); }
+            },
+            {
+                path: 'copy',
+                title: '文案',
+                name: 'copy',
+                icon: 'images',
+                component: resolve => { require(['./views/admins/copy.vue'], resolve); }
+            }
         ]
     },
-    
     {
         path: '/workorder',
         icon: 'android-checkbox',
@@ -174,35 +229,102 @@ export const appRouter = [
         title: '工单',
         component: Main,
         children: [
-            { path: 'purchase', title: '购买记录', name: 'purchase', icon: 'compose', component: resolve => { require(['./views/workorder/purchase/purchase.vue'], resolve); } },
-            { path: 'recharge', title: '充值记录', name: 'recharge', icon: 'arrow-swap', component: resolve => { require(['./views/workorder/recharge/recharge.vue'], resolve); } }
+            {
+                path: 'purchase',
+                title: '购买记录',
+                name: 'purchase',
+                icon: 'compose',
+                component: resolve => { require(['./views/workorder/purchase/purchase.vue'], resolve); }
+            },
+            {
+                path: 'recharge',
+                title: '充值记录',
+                name: 'recharge',
+                icon: 'arrow-swap',
+                component: resolve => { require(['./views/workorder/recharge/recharge.vue'], resolve); }
+            }
 
         ]
     },
-     {
+    {
         path: '/setup',
         icon: 'ios-grid-view',
-        name: 'setunp',
+        name: 'setup',
         title: '设置',
         component: Main,
         children: [
-            { path: 'information', title: '基本信息', name: 'information', icon: 'arrow-move', component: resolve => { require(['./views/setup/information.vue'], resolve); } },
-            { path: 'Einformation', title: '增强信息', name: 'Einformation', icon: 'edit', component: resolve => { require(['./views/setup/Einformation.vue'], resolve); } },
-            { path: 'authentication', title: '认证', name: 'authentication', icon: 'search', component: resolve => { require(['./views/setup/authentication.vue'], resolve); } },
-            { path: 'exportableTable', title: '充值', name: 'exportable-table', icon: 'code-download', component: resolve => { require(['./views/setup/exportable-table.vue'], resolve); } },
-            { path: 'adminer', title: '管理员', name: 'adminer', icon: 'images', component: resolve => { require(['./views/setup/adminer.vue'], resolve); } }
+            {
+                path: 'information',
+                title: '基本信息',
+                name: 'information',
+                icon: 'arrow-move',
+                component: resolve => { require(['./views/setup/information.vue'], resolve); }
+            },
+            {
+                path: 'Einformation',
+                title: '增强信息',
+                name: 'Einformation',
+                icon: 'edit',
+                component: resolve => { require(['./views/setup/Einformation.vue'], resolve); }
+            },
+            {
+                path: 'authentication',
+                title: '认证',
+                name: 'authentication',
+                icon: 'search',
+                component: resolve => { require(['./views/setup/authentication.vue'], resolve); }
+            },
+            {
+                path: 'exportableTable',
+                title: '充值',
+                name: 'exportable-table',
+                icon: 'code-download',
+                component: resolve => { require(['./views/setup/exportable-table.vue'], resolve); }
+            },
+            {
+                path: 'adminer',
+                title: '管理员',
+                name: 'adminer',
+                icon: 'images',
+                component: resolve => { require(['./views/setup/adminer.vue'], resolve); }
+            }
         ]
-    }
+    },
+    {
+        path: '/mydata',
+        icon: 'android-checkbox',
+        name: 'mydata',
+        title: '大数据',
+        component: Main,
+        children: [
+            {
+                path: 'Visuakization',
+                title: '可视化',
+                name: 'Visuakization',
+                icon: 'compose',
+                component: resolve => { require(['./views/bigdata/Visuakization.vue'], resolve); }
+            },
+            {
+                path: 'data',
+                title: '我的数据',
+                name: 'data',
+                icon: 'arrow-swap',
+                component: resolve => { require(['./views/bigdata/data.vue'], resolve); }
+            }
+
+        ]
+    },
 ];
 
 // 所有上面定义的路由都要写在下面的routers里
 export const routers = [
     loginRouter,
     resigister,
-    announce,	
+    announce,
     email,
     fillin,
     success,
+    creatNewView,
     otherRouter,
     locking,
     ...appRouter,

@@ -11,7 +11,7 @@
                         <Row type="flex" class="user-infor">
                             <Col span="8">
                                 <Row class-name="made-child-con-middle" type="flex" align="middle">
-                                    <img class="avator-img" :src="avatorPath" />
+                                    <img class="avator-img"  />
                                     <!--头像-->
                                 </Row>
                             </Col>
@@ -44,18 +44,22 @@
 </template>
 
 <script>
-
-
+    import Cookies from 'js-cookie';
 export default {
     name: 'home',
     data () {
         return {
         };
     },
-    computed: {
-        avatorPath () {
-            return localStorage.avatorImgPath;
-        }
+    mounted(){
+        this.$http.post('http://120.76.72.183:6158/ent/rest/EntBaseBusiness/modify',{
+            headers:{
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'token':Cookies.get('token')
+            }
+        }).then((res)=>{
+            console.log(res);
+        })
     }
-};
+}
 </script>

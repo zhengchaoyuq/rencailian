@@ -3,15 +3,15 @@
 </style>
 <template>
     <div class="login" @keydown.enter="handleSubmit">
-    	<div class="zhuce">
-    	
-    		<div class="context">
-    			<span style="color:black">第一次使用？</span>
-    			<span @click="announce" style="cursor: pointer">立即注册</span>|<span style="cursor: pointer">客服</span>
-    		</div>
-    		
-    	</div>
-    	
+        <div class="zhuce">
+
+            <div class="context">
+                <span style="color:black">第一次使用？</span>
+                <span @click="announce" style="cursor: pointer">立即注册</span>|<span style="cursor: pointer">客服</span>
+            </div>
+
+        </div>
+
         <div class="login-con">
             <Card :bordered="false">
                 <p slot="title">
@@ -22,14 +22,14 @@
                     <Form ref="loginForm" :model="form" :rules="rules">
                         <FormItem prop="userName">
                             <Input v-model="form.userName" placeholder="请输入用户名">
-                                <span slot="prepend">
+                            <span slot="prepend">
                                     <Icon :size="16" type="person"></Icon>
                                 </span>
                             </Input>
                         </FormItem>
                         <FormItem prop="password">
                             <Input type="password" v-model="form.password" placeholder="请输入密码">
-                                <span slot="prepend">
+                            <span slot="prepend">
                                     <Icon :size="14" type="locked"></Icon>
                                 </span>
                             </Input>
@@ -45,69 +45,87 @@
 </template>
 
 <script>
-import Cookies from 'js-cookie';
-export default {
-    data () {
-        return {
-            form: {
-                userName: '',
-                password: ''
-            },
-            rules: {
-                userName: [
-                    { required: true, message: '账号不能为空', trigger: 'blur' }
-                ],
-                password: [
-                    { required: true, message: '密码不能为空', trigger: 'blur' }
-                ]
-            }
-        };
-    },
-    methods: {
-        handleSubmit () {
-            this.$refs.loginForm.validate((valid) => {
-                if (valid) {
-                    Cookies.set('user', this.form.userName);
-                    Cookies.set('password', this.form.password);
-                    this.$store.commit('setAvator', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg');
-                    if (this.form.userName === 'iview_admin') {
-                        Cookies.set('access', 0);
-                    } else {
-                        Cookies.set('access', 1);
-                    }
-                    this.$router.push({
-                        name: 'home'
-                    });
+    import Cookies from 'js-cookie';
+
+    export default {
+        data () {
+            return {
+                form: {
+                    userName: '',
+                    password: ''
+                },
+                rules: {
+                    userName: [
+                        {required: true, message: '账号不能为空', trigger: 'blur'},
+                        {
+                            type: 'email',
+                            message: '邮箱格式不正确',
+                            trigger: 'blur'
+                        }
+                    ],
+                    password: [
+                        {required: true, message: '密码不能为空', trigger: 'blur'}
+
+                    ]
                 }
-            });
+            };
         },
-      announce(){
-      	 this.$router.push({
-                        name: 'announce'
-                    });
-      }
-    }
-    
-};
+        methods: {
+            handleSubmit () {
+                this.$refs.loginForm.validate((valid) => {
+                    if (valid) {
+                        this.$http.get('http://120.76.72.183:6158/ent/rest/EntAuthBusiness/login', {
+                            params: {
+                                userName: this.form.userName,
+                                pwd: this.form.password
+                            }
+                        }).then((res) => {
+                            console.log(res.data);
+                            if (res.data.code === 500) {
+                                alert(res.data.msg);
+                            }
+                            else {
+                                Cookies.set('token', res.data.data);
+                                Cookies.set('user', this.form.userName);
+                                this.$router.push({
+                                    name: 'home'
+                                });
+                            }
+                        });
+
+                    }
+                });
+            },
+            announce () {
+                this.$router.push({
+                    name: 'announce'
+                });
+            }
+        }
+
+    };
 </script>
 
 <style>
-.zhuce{
-	width:100%;
-	height:10%;
-	background-color: gainsboro;
-}
-.zhuce img {
-	position:absolute;
-}
-.context{
-	position:relative;
-	left:75%;
-	top:70%;
-	font-size: 1rem;
-}
-.context span{
-	color: #4e73ff;
-	
-}
+    .zhuce {
+        width: 100%;
+        height: 10%;
+        background-color: gainsboro;
+    }
+
+    .zhuce img {
+        position: absolute;
+    }
+
+    .context {
+        position: relative;
+        left: 75%;
+        top: 70%;
+        font-size: 1rem;
+    }
+
+    .context span {
+        color: #4e73ff;
+
+    }
 </style>
