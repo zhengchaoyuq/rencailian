@@ -97,10 +97,10 @@ export const otherRouter = {
     component: Main,
     children: [
         {
-            path: 'login',
+            path: 'home',
             title: {i18n: '首页'},
-            name: 'login',
-            component: resolve => { require(['./views/login.vue'], resolve); }
+            name: 'home',
+            component: resolve => { require(['./views/home/home.vue'], resolve); }
         },
         {
             path: 'ownspace',

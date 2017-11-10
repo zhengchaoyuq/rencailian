@@ -5,7 +5,10 @@
                 <Button shape="circle" icon="chevron-left" @click="fanhui"></Button>
             </div>
                <div class="topCenter">
-
+                   <div class="topIcon">
+                       <Icon type="android-expand" color="white" size="30"></Icon>
+                       <p>常规图标</p>
+                   </div>
                </div>
             <div class="topRight">
                 <div class="topIcon">
@@ -43,6 +46,7 @@
             </div>
 
         </div>
+        <div class="mdDiv"></div>
         <div class="bottomDiv">
             <Button icon="trash-a" style="float:left;">删除</Button>
 
@@ -83,12 +87,17 @@
     }
     .topCenter{
         width:50%;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content:flex-start;
     }
     .topRight{
         width:40%;
         display: flex;
         align-items: center;
         justify-content:flex-end;
+        margin-left:-2rem;
     }
 
     .topIcon {
@@ -98,16 +107,22 @@
     .leftDiv {
         width: 10%;
         height: 85%;
-        background-color: black;
         position: absolute;
         left: 0;
         top: 10%;
     }
+    .mdDiv{
+        width:70%;
+        height:85%;
+        position: absolute;
+        left:10%;
+        top:10%;
+        background-color: #e5e4e5;
 
+    }
     .bottomDiv {
         width: 80%;
         height: 5%;
-        background-color: pink;
         position: absolute;
         bottom: 0;
         left: 0;
@@ -118,7 +133,6 @@
     .rightDiv {
         width: 20%;
         height: 90%;
-        background-color: red;
         float: right;
         position: absolute;
         right: 0;
@@ -128,7 +142,6 @@
     .leftTable {
         width: 100%;
         height: 10%;
-        background-color: yellow;
         display: flex;
         align-items: center;
     }

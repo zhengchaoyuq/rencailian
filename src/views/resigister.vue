@@ -26,6 +26,9 @@
                                 <Input v-model="form.email" placeholder="请输入邮箱"></Input>
                                 <Button style="width:20%">验证邮箱</Button>
                             </FormItem>
+                            <FormItem label="电话" prop="mobile">
+                                <Input v-model="form.mobile" placeholder="电话"></Input>
+                            </FormItem>
                             <FormItem label="密码" prop="password">
                                 <Input type="password" v-model="form.password" placeholder="请输入密码">
                                 </Input>
@@ -58,12 +61,18 @@
                     userName: '',
                     password: '',
                     repassword: '',
-                    email: ''
+                    email: '',
+                    mobile: ''
                 },
                 rules: {
                     userName: [{
                         required: true,
                         message: '企业全称不能为空',
+                        trigger: 'blur'
+                    }],
+                    mobile: [{
+                        required: true,
+                        message: '联系方式不能为空',
                         trigger: 'blur'
                     }],
                     password: [{
@@ -93,16 +102,32 @@
         created () {
             this.$watch('form', function (newVal) {
                 this.Ynbutton(newVal);
-
             }, {
                 deep: true
             });
         },
         methods: {
             email () {
-                this.$router.push({
-                    name: 'email'
+                this.$http.get('http://120.76.72.183:6158/ent/rest/EntMainBusiness/register', {
+                    params: {
+                        user_Name: this.form.userName,
+                        pwd1: this.form.password,
+                        pwd2: this.form.repassword,
+                        mobile: this.form.mobile,
+                        email: this.form.email
+                    }
+                }).then((res) => {
+                    console.log(res.data);
+                    if (res.data.code === 500) {
+                        alert(res.data.msg);
+                    }
+                    else {
+                        this.$router.push({
+                            name: 'email'
+                        });
+                    }
                 });
+
             },
             Ynbutton (newVal) {
                 this.$refs.form.validate((valid) => {

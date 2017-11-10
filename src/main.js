@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import iView from 'iview';
 import VueRouter from 'vue-router';
-import {routers, otherRouter, appRouter} from './router';
+import { routers, otherRouter, appRouter } from './router';
 import Vuex from 'vuex';
 import Util from './libs/util';
 import App from './app.vue';
@@ -12,6 +12,7 @@ import VueI18n from 'vue-i18n';
 
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+
 Vue.use(VueAxios, axios);
 Vue.use(VueRouter);
 Vue.use(Vuex);
@@ -23,7 +24,6 @@ const RouterConfig = {
 
     routes: routers
 };
-
 const router = new VueRouter(RouterConfig);
 
 router.beforeEach((to, from, next) => {
@@ -40,7 +40,7 @@ router.beforeEach((to, from, next) => {
         if (Cookies.get('user') && to.name === 'login') {  // 判断是否已经登录且前往的是登录页
             Util.title();
             next({
-                name: 'home'
+                name: 'home_index'
             });
         } else {
             if (Util.getRouterObjByName([otherRouter, ...appRouter], to.name).access !== undefined) {  // 判断用户是否有权限访问当前页
@@ -76,14 +76,14 @@ const store = new Vuex.Store({
         pageOpenedList: [{
             title: '首页',
             path: '',
-            name: 'home'
+            name: 'home_index'
         }],
         currentPageName: '',
         currentPath: [
             {
                 title: '首页',
                 path: '',
-                name: 'home'
+                name: 'home_index'
             }
         ],  // 面包屑数组
         openedSubmenuArr: [],  // 要展开的菜单数组
@@ -92,11 +92,9 @@ const store = new Vuex.Store({
         cachePage: [],
         lang: '',
         isFullScreen: false,
-        dontCache: ['home']  // 在这里定义你不想要缓存的页面的name属性值(参见路由配置router.js)
+        dontCache: ['']  // 在这里定义你不想要缓存的页面的name属性值(参见路由配置router.js)
     },
-    getters: {
-
-    },
+    getters: {},
     mutations: {
         setTagsList (state, list) {
             state.tagsList.push(...list);
@@ -141,7 +139,7 @@ const store = new Vuex.Store({
         clearAllTags (state) {
             state.pageOpenedList.splice(1);
             router.push({
-                name: 'home_index'
+                name: 'home'
             });
             state.cachePage.length = 0;
             localStorage.pageOpenedList = JSON.stringify(state.pageOpenedList);
@@ -287,9 +285,7 @@ const store = new Vuex.Store({
             state.isFullScreen = !state.isFullScreen;
         }
     },
-    actions: {
-
-    }
+    actions: {}
 });
 
 new Vue({
